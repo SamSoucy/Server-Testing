@@ -26,5 +26,18 @@ describe('Post("/")', () => {
         const res = await req(server).post("/users").send(user);
         expect(res.status).toBe(422);
     });
-})
+});
+
+describe("delete users", () => {
+    it("should respond with 200 success code when a user has been deleted", async () => {
+        const id = 1;
+        const res = await req(server).delete("/users/:id");
+        expect(res.status).toBe(200);
+        
+    });
+    it("should respond with a json", async () => {
+        const res = await req(server).delete('/users/id');
+        expect(res.type).toEqual('application/json');
+  });
+});
 
